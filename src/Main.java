@@ -83,7 +83,11 @@ public class Main {
             calls.forEach((time, call) -> {
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                 String formatDateTime = time.format(format);
-                System.out.println(formatDateTime + " " + call);
+                Contact contact = getContact(call);
+                String callInfo = contact != null
+                        ? contact.getName() + " " + contact.getSurname() + " " + call
+                        : call;
+                System.out.println(formatDateTime + " " + callInfo);
             });
         }
     }
